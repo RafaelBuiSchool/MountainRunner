@@ -11,7 +11,7 @@ public class MainFrame extends JFrame implements Runnable {
         int frameHeight = 2000;
         p = new PanelPainter();
         this.add(p);
-       // this.addKeyListener(p);
+        //this.addKeyListener(p);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(frameWidth, frameHeight);
         this.setLocation(0, 0);
