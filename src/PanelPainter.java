@@ -25,7 +25,6 @@ public class PanelPainter extends JPanel{
         exit = new Rectangle(350, 560, 320, 100);
     }
     protected void paintComponent(Graphics g) {
-        Image startScreen = Toolkit.getDefaultToolkit().createImage("sprites/StartScreen.png");
         g.setFont(new Font("Broadway", Font.BOLD, 50));
         g.drawString("CONTINUE", 365, 305);
         g.drawRect((int)continueGame.getX(), (int)continueGame.getY(), (int)continueGame.getWidth(), (int)continueGame.getHeight());
@@ -35,6 +34,6 @@ public class PanelPainter extends JPanel{
         g.setFont(new Font("Broadway", Font.BOLD, 50));
         g.drawString("EXIT", 440, 625);
         g.drawRect((int)exit.getX(), (int)exit.getY(), (int)exit.getWidth(), (int)exit.getHeight());
-        g.drawImage(startScreen,0,0,null);
+        g.drawImage(ImageIcon("sprites/SnowTree.png"));
     }
 }
