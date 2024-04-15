@@ -7,7 +7,7 @@ public class MainFrame extends JFrame implements Runnable {
 
     public MainFrame(String display) {
         super(display);
-        int frameWidth = 1000;
+        int frameWidth = 3000;
         int frameHeight = 2000;
         p = new PanelPainter();
         this.add(p);
