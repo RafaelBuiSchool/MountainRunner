@@ -1,10 +1,10 @@
 import javax.swing.JFrame;
 
-public class gameplayScreen extends JFrame implements Runnable {
+public class levelHomeScreen extends JFrame implements Runnable {
     private Thread windowThread;
     private HomeScreenPainter p;
 
-    public gameplayScreen(String display) {
+    public levelHomeScreen(String display) {
         super(display);
         int frameWidth = 3000;
         int frameHeight = 2000;

@@ -14,7 +14,7 @@ public class HomeScreenPainter extends JPanel implements MouseListener{
     private Rectangle continueGame;
     private Rectangle newGame;
     private Rectangle exit;
-    private gameplayScreen game;
+    private levelHomeScreen game;
     public HomeScreenPainter(){
         continueGame = new Rectangle(800, 400, 320, 100);
         newGame = new Rectangle(800, 560, 320, 100);
@@ -25,7 +25,7 @@ public class HomeScreenPainter extends JPanel implements MouseListener{
     protected void paintComponent(Graphics g) {
         BufferedImage homeScreen = null;
         try {
-            homeScreen = ImageIO.read(new File("sprites/background.png"));
+            homeScreen = ImageIO.read(new File("sprites/HomeScreenBackground.png"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -46,10 +46,10 @@ public class HomeScreenPainter extends JPanel implements MouseListener{
         Point clicked = e.getPoint();
         if(e.getButton()==1){
             if(continueGame.contains(clicked)){
-                game = new gameplayScreen("Continued Game");
+                game = new levelHomeScreen("Levels (CONTINUED GAME)");
             }
             else if(newGame.contains(clicked)){
-                game = new gameplayScreen("New Game");
+                game = new levelHomeScreen("Levels (NEW GAME)");
             }
             else if(exit.contains(clicked)){
                 System.exit(0);
