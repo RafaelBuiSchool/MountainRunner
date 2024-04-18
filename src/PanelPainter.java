@@ -1,13 +1,12 @@
 import java.awt.*;
 import java.awt.event.KeyListener;
-import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import javax.swing.JPanel;
 import java.awt.event.KeyEvent;
 import java.awt.Font;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 import java.io.File;
 import java.io.IOException;
@@ -15,7 +14,7 @@ import java.io.IOException;
 
 
 
-public class PanelPainter extends JPanel{
+public class PanelPainter extends JPanel implements MouseListener, KeyListener{
 
     private Rectangle continueGame;
     private Rectangle newGame;
@@ -24,6 +23,8 @@ public class PanelPainter extends JPanel{
         continueGame = new Rectangle(800, 400, 320, 100);
         newGame = new Rectangle(800, 560, 320, 100);
         exit = new Rectangle(800, 720, 320, 100);
+        this.addMouseListener(this);
+        this.addKeyListener(this);
     }
     protected void paintComponent(Graphics g) {
         BufferedImage homeScreen = null;
@@ -44,5 +45,17 @@ public class PanelPainter extends JPanel{
         g.setFont(new Font("Broadway", Font.BOLD, 50));
         g.drawString("EXIT", 890, 785);
         g.drawRect((int)exit.getX(), (int)exit.getY(), (int)exit.getWidth(), (int)exit.getHeight());
+    }
+    public void mousePressed(MouseEvent e){
+        Point cursorPosition = e.getPoint();
+
+    }
+    public void mouseReleased(MouseEvent e) { }
+    public void mouseEntered(MouseEvent e) { }
+    public void mouseExited(MouseEvent e) { }
+    public void mouseClicked(MouseEvent e) { }
+    public void keyPressed(KeyEvent e) {
+    }
+    public void keyReleased(KeyEvent e) {
     }
 }
