@@ -1,30 +1,26 @@
 import java.awt.*;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import javax.swing.JPanel;
-import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import javax.swing.*;
 import java.awt.Font;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import javax.swing.WindowConstants;
 import java.io.File;
 import java.io.IOException;
 
 
-
-
-public class PanelPainter extends JPanel implements MouseListener, KeyListener{
+public class HomeScreenPainter extends JPanel implements MouseListener{
 
     private Rectangle continueGame;
     private Rectangle newGame;
     private Rectangle exit;
-    public PanelPainter(){
+    private gameplayScreen game;
+    public HomeScreenPainter(){
         continueGame = new Rectangle(800, 400, 320, 100);
         newGame = new Rectangle(800, 560, 320, 100);
         exit = new Rectangle(800, 720, 320, 100);
         this.addMouseListener(this);
-        this.addKeyListener(this);
+        this.game = game;
     }
     protected void paintComponent(Graphics g) {
         BufferedImage homeScreen = null;
@@ -47,15 +43,22 @@ public class PanelPainter extends JPanel implements MouseListener, KeyListener{
         g.drawRect((int)exit.getX(), (int)exit.getY(), (int)exit.getWidth(), (int)exit.getHeight());
     }
     public void mousePressed(MouseEvent e){
-        Point cursorPosition = e.getPoint();
+        Point clicked = e.getPoint();
+        if(e.getButton()==1){
+            if(continueGame.contains(clicked)){
+                game = new gameplayScreen("Continued Game");
+            }
+            else if(newGame.contains(clicked)){
+                game = new gameplayScreen("New Game");
+            }
+            else if(exit.contains(clicked)){
+                System.exit(0);
+            }
+        }
 
     }
     public void mouseReleased(MouseEvent e) { }
     public void mouseEntered(MouseEvent e) { }
     public void mouseExited(MouseEvent e) { }
     public void mouseClicked(MouseEvent e) { }
-    public void keyPressed(KeyEvent e) {
-    }
-    public void keyReleased(KeyEvent e) {
-    }
 }

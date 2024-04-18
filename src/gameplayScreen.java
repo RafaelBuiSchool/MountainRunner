@@ -1,15 +1,14 @@
 import javax.swing.JFrame;
-import java.awt.*;
 
-public class MainFrame extends JFrame implements Runnable {
+public class gameplayScreen extends JFrame implements Runnable {
     private Thread windowThread;
-    private PanelPainter p;
+    private HomeScreenPainter p;
 
-    public MainFrame(String display) {
+    public gameplayScreen(String display) {
         super(display);
         int frameWidth = 3000;
         int frameHeight = 2000;
-        p = new PanelPainter();
+        p = new HomeScreenPainter();
         this.add(p);
         //this.addKeyListener(p);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
