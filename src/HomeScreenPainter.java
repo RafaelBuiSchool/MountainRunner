@@ -14,13 +14,15 @@ public class HomeScreenPainter extends JPanel implements MouseListener{
     private Rectangle continueGame;
     private Rectangle newGame;
     private Rectangle exit;
-    private levelHomeScreenNew game;
+    private NewGame game;
+    private ContinuedGame currentGame;
     public HomeScreenPainter(){
         continueGame = new Rectangle(800, 400, 320, 100);
         newGame = new Rectangle(800, 560, 320, 100);
         exit = new Rectangle(800, 720, 320, 100);
         this.addMouseListener(this);
         this.game = game;
+        this.currentGame = currentGame;
     }
     protected void paintComponent(Graphics g) {
         BufferedImage homeScreen = null;
@@ -46,10 +48,10 @@ public class HomeScreenPainter extends JPanel implements MouseListener{
         Point clicked = e.getPoint();
         if(e.getButton()==1){
             if(continueGame.contains(clicked)){
-                game = new LevelHomeScreenContinued("Levels (CONTINUED GAME)");
+                currentGame = new ContinuedGame("Levels (CONTINUED GAME)");
             }
             else if(newGame.contains(clicked)){
-                game = new levelHomeScreenNew("Levels (NEW GAME)");
+                game = new NewGame("Levels (NEW GAME)");
             }
             else if(exit.contains(clicked)){
                 System.exit(0);
