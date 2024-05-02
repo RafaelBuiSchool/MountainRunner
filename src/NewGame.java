@@ -10,7 +10,7 @@ public class NewGame extends JFrame implements Runnable {
         int frameHeight = 2000;
         x = new NewGamePainter();
         this.add(x);
-        this.addKeyListener(x);
+        //this.addKeyListener(x);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(frameWidth, frameHeight);
         this.setLocation(0, 0);

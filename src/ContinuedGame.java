@@ -2,7 +2,7 @@ import javax.swing.JFrame;
 
 public class ContinuedGame extends JFrame implements Runnable {
     private Thread windowThread;
-    private NewGamePainter i;
+    private ContinuedGamePainter i;
 
     public ContinuedGame(String display) {
         super(display);
@@ -10,7 +10,7 @@ public class ContinuedGame extends JFrame implements Runnable {
         int frameHeight = 2000;
         i = new ContinuedGamePainter();
         this.add(i);
-        this.addKeyListener(i);
+        //this.addKeyListener(i);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(frameWidth, frameHeight);
         this.setLocation(0, 0);

@@ -10,6 +10,23 @@ import java.io.IOException;
 import java.awt.event.KeyListener;
 
 
-public class NewGamePainter extends JPanel implements MouseListener, KeyListener{
-    private
+public class NewGamePainter extends JPanel{
+    private Rectangle platform;
+    private Rectangle spike;
+    private Rectangle door;
+    private Rectangle bird;
+    public NewGamePainter(){
+
+    }
+    public void paintComponent(Graphics g){
+        BufferedImage levelBackground = null;
+        try {
+            levelBackground = ImageIO.read(new File("sprites/LevelBackground.jpg"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        g.drawImage(levelBackground,0,0,getWidth(),getHeight(),null);
+
+
+    }
 }
