@@ -6,14 +6,14 @@ public class HomeScreen extends JFrame implements Runnable {
 
     public HomeScreen(String display) {
         super(display);
-        int frameWidth = 3000;
-        int frameHeight = 2000;
-        p = new HomeScreenPainter();
+        int frameWidth = 1024;
+        int frameHeight = 683;
+        p = new HomeScreenPainter(this);
         this.add(p);
         //this.addKeyListener(p);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setSize(frameWidth, frameHeight);
-        this.setLocation(0, 0);
+        this.setLocationRelativeTo(null);
         this.setVisible(true);
         startThread();
 
