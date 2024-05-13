@@ -8,7 +8,7 @@ public class LevelChooser extends JFrame implements Runnable {
         super(display);
         int frameWidth = 626;
         int frameHeight = 416;
-        x = new LevelChooserPainter();
+        x = new LevelChooserPainter(this);
         this.add(x);
         //this.addKeyListener(x);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
