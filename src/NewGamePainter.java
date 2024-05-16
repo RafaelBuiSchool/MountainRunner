@@ -14,14 +14,14 @@ public class NewGamePainter extends JPanel{
     private Rectangle platform;
     private Rectangle spike;
     private Rectangle door;
-    private Rectangle bird;
-    public NewGamePainter(){
+
+    public NewGamePainter(NewGame closeWhenCompleted){
 
     }
     public void paintComponent(Graphics g){
         BufferedImage levelBackground = null;
         try {
-            levelBackground = ImageIO.read(new File("sprites/LevelBackground.jpg"));
+            levelBackground = ImageIO.read(new File("sprites/WorldBackground.png"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
