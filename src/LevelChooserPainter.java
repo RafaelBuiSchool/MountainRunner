@@ -12,7 +12,9 @@ public class LevelChooserPainter extends JPanel implements MouseListener{
     private Rectangle easy;
     private Rectangle medium;
     private Rectangle hard;
-    private NewGame game;
+    private EasyGame gameE;
+    private MediumGame gameM;
+    private HardGame gameH;
     private LevelChooser sc;
 
     public LevelChooserPainter(LevelChooser sc){
@@ -21,7 +23,9 @@ public class LevelChooserPainter extends JPanel implements MouseListener{
         medium = new Rectangle(160, 155, 300, 70);
         hard = new Rectangle(160,245,300,70);
         this.addMouseListener(this);
-        this.game = game;
+        this.gameE = gameE;
+        this.gameM = gameM;
+        this.gameH = gameH;
     }
     public void paintComponent(Graphics g){
         BufferedImage levelBackground = null;
@@ -58,15 +62,15 @@ public class LevelChooserPainter extends JPanel implements MouseListener{
         Point clicked = e.getPoint();
         if(e.getButton()==1){
             if(easy.contains(clicked)){
-                game = new NewGame("EASY LEVEL");
+                gameE = new EasyGame("EASY LEVEL");
                 sc.dispose();
             }
             else if(medium.contains(clicked)){
-                game = new NewGame("HARD LEVEL");
+                gameM = new MediumGame("MEDIUM LEVEL");
                 sc.dispose();
             }
             else if(hard.contains(clicked)){
-                game = new NewGame("HARD LEVEL");
+                gameH = new HardGame("HARD LEVEL");
                 sc.dispose();
             }
         }
