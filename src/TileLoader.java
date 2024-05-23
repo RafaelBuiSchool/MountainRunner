@@ -2,11 +2,11 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.nio.Buffer;
+
 public class TileLoader {
     private int tileType;
-    private BufferedImage spike;
-    private BufferedImage platform;
-    private BufferedImage door;
+    private BufferedImage image;
     private int row;
     private int col;
     private boolean hasPlayer;
@@ -14,6 +14,7 @@ public class TileLoader {
     private final String d = "sprites/LevelDoor.png";
     private final String p = "sprites/LevelPlatform.png";
     public TileLoader(int tileType, int row, int col) {
+        this.setTileType(tileType);
         this.hasPlayer = false;
         this.row = row;
         this.col = col;
@@ -29,13 +30,13 @@ public class TileLoader {
     public void setTileType(int tileType) {
         this.tileType = tileType;
         if (tileType == 1) {
-            spike = loadImage(s);
+            image = loadImage(p);
         }
         if (tileType == 2) {
-            platform = loadImage(p);
+            image = loadImage(s);
         }
         if (tileType == 3) {
-            door = loadImage(d);
+            image = loadImage(d);
         }
     }
     public BufferedImage loadImage(String fileName) {
@@ -48,6 +49,9 @@ public class TileLoader {
             System.out.println(e);
             return null;
         }
+    }
+    public BufferedImage getImage(){
+        return image;
     }
     public int getRow() {
         return row;

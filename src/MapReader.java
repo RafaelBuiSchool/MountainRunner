@@ -9,7 +9,8 @@ public class MapReader {
     private TileLoader[][] map;
     private int rows;
     private int cols;
-    public MapReader(){
+    public MapReader(String name){
+        generateWorld(name);
     }
     private void generateWorld(String name) {
         int[][] mazeData = getWorld("Maps/" + name);
@@ -22,7 +23,7 @@ public class MapReader {
             }
         }
     }
-    private int[][] getWorld(String fileName) {
+    public int[][] getWorld(String fileName) {
         File f = new File(fileName);
         Scanner s = null;
         try {
@@ -69,4 +70,20 @@ public class MapReader {
         }
     }
 
+    public Player getP() {
+        return p;
+    }
+
+    public TileLoader[][] getMap() {
+        return map;
+    }
+
+    public int getRows() {
+        return rows;
+    }
+
+    public int getCols() {
+        return cols;
+    }
 }
+
