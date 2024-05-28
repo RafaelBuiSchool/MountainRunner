@@ -25,17 +25,25 @@ public class EasyGamePainter extends JPanel {
             throw new RuntimeException(e);
         }
         g.drawImage(levelBackground, 0, 0, getWidth(), getHeight(), null);
-        int x = 0;
+        int x = 50;
         int y = 40;
 
         for (int row = 0; row < m.getMap().length; row++) {
             for (int col = 0; col < m.getMap()[0].length; col++) {
                 TileLoader t = m.getMap()[row][col];
-                g.drawImage(t.getImage(),x,y,null);
-                x += 50;
+                if(t.getTileType() == 3){
+                    g.drawImage(t.getImage(),x,y-30,null);
+                }
+                else if(t.getTileType() == 2){
+                    g.drawImage(t.getImage(),x,y-60,null);
+                }
+                else{
+                    g.drawImage(t.getImage(),x,y,null);
+                }
+                x += 45;
             }
-            x =0;
-            y+= 100;
+            x =40;
+            y+= 75;
         }
     }
 }

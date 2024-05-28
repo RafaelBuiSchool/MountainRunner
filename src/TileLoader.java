@@ -60,4 +60,8 @@ public class TileLoader {
     public int getCol() {
         return col;
     }
+
+    public int getTileType() {
+        return tileType;
+    }
 }
