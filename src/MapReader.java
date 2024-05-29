@@ -9,6 +9,25 @@ public class MapReader {
     private TileLoader[][] map;
     private int rows;
     private int cols;
+    public void movement(String direction){
+        int currentPlayerRow = p.getRow();
+        int currentPlayerColumn = p.getCol();
+        if (direction.equals("E")) {
+            if (currentPlayerColumn < map[0].length - 1 && currentPlayerColumn >= 0)  {
+                if (map[currentPlayerRow][currentPlayerColumn + 1].getTileType() < map[0].length - 1){
+                    p.setCol(currentPlayerColumn + 1);
+                }
+            }
+        }
+        if (direction.equals("W")) {
+            if (currentPlayerColumn < map[0].length - 1 && currentPlayerColumn >= 0) {
+                if (map[currentPlayerRow][currentPlayerColumn - 1].getTileType() >=0 ) {
+                    p.setCol(currentPlayerColumn - 1);
+                }
+            }
+        }
+
+    }
     public MapReader(String name){
         generateWorld(name);
     }
