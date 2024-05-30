@@ -8,13 +8,11 @@ import java.nio.Buffer;
 public class Player {
     private BufferedImage characterLeft;
     private BufferedImage getCharacterRight;
-    private final String faceLeft = "sprites/PlayerLeft.png";
-    private final String faceRight = "sprites/PlayerRight.png";
-    private int row;
-    private int col;
-    public Player(int row, int col){
-        this.row = row;
-        this.col = col;
+    private final String faceLeft = "sprites/test.png";
+    private final String faceRight = "sprites/test1.png";
+    private int x;
+    private int y;
+    public Player(){
         characterLeft = loadImage(faceLeft);
         getCharacterRight = loadImage(faceRight);
     }
@@ -34,23 +32,19 @@ public class Player {
         return characterLeft;
     }
 
-    public BufferedImage getGetCharacterRight() {
+    public BufferedImage getCharacterRight() {
         return getCharacterRight;
     }
-
-    public int getRow() {
-        return row;
+    public int getX() {
+        return x;
     }
-
-    public void setRow(int row) {
-        this.row = row;
+    public void setX(int x) {
+        this.x = x;
     }
-
-    public int getCol() {
-        return col;
+    public int getY() {
+        return y;
     }
-
-    public void setCol(int col) {
-        this.col = col;
+    public void setY(int y) {
+        this.y = y;
     }
 }

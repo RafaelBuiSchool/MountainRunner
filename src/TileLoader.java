@@ -10,9 +10,9 @@ public class TileLoader {
     private int row;
     private int col;
     private boolean hasPlayer;
-    private final String s = "sprites/SmallSpike.png";
+    private final String s = "sprites/Spike.png";
     private final String c = "sprites/CampFire.png";
-    private final String p = "sprites/LevelPlatform.png";
+    private final String p = "sprites/Platform.png";
     public TileLoader(int tileType, int row, int col) {
         this.setTileType(tileType);
         this.hasPlayer = false;

@@ -10,23 +10,18 @@ public class MapReader {
     private int rows;
     private int cols;
     public void movement(String direction){
-        int currentPlayerRow = p.getRow();
-        int currentPlayerColumn = p.getCol();
+        int playerX = 55;
+        int playerY = 25;
         if (direction.equals("E")) {
-            if (currentPlayerColumn < map[0].length - 1 && currentPlayerColumn >= 0)  {
-                if (map[currentPlayerRow][currentPlayerColumn + 1].getTileType() < map[0].length - 1){
-                    p.setCol(currentPlayerColumn + 1);
-                }
+            if(!(p.getX()+5 >= 1485)){
+                p.setX(p.getX()+5);
             }
         }
         if (direction.equals("W")) {
-            if (currentPlayerColumn < map[0].length - 1 && currentPlayerColumn >= 0) {
-                if (map[currentPlayerRow][currentPlayerColumn - 1].getTileType() >=0 ) {
-                    p.setCol(currentPlayerColumn - 1);
-                }
+            if(!(p.getX() - 5 < 55)){
+                p.setX(p.getX()-5);
             }
         }
-
     }
     public MapReader(String name){
         generateWorld(name);
@@ -72,9 +67,6 @@ public class MapReader {
                     worldData[i][j] = 2;
                 if (d.charAt(j) == '*')
                     worldData[i][j] = 3;
-                if (d.charAt(j) == 'S') {
-                    this.p = new Player(i, j);
-                }
             }
         }
         return worldData;
