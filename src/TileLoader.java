@@ -11,7 +11,7 @@ public class TileLoader {
     private int col;
     private boolean hasPlayer;
     private final String s = "sprites/SmallSpike.png";
-    private final String d = "sprites/LevelDoor.png";
+    private final String c = "sprites/CampFire.png";
     private final String p = "sprites/LevelPlatform.png";
     public TileLoader(int tileType, int row, int col) {
         this.setTileType(tileType);
@@ -36,7 +36,7 @@ public class TileLoader {
             image = loadImage(s);
         }
         if (tileType == 3) {
-            image = loadImage(d);
+            image = loadImage(c);
         }
     }
     public BufferedImage loadImage(String fileName) {

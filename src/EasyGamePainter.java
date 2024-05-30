@@ -32,7 +32,7 @@ public class EasyGamePainter extends JPanel {
             for (int col = 0; col < m.getMap()[0].length; col++) {
                 TileLoader t = m.getMap()[row][col];
                 if(t.getTileType() == 3){
-                    g.drawImage(t.getImage(),x+8,y-35,null);
+                    g.drawImage(t.getImage(),x+13,y-30,null);
                 }
                 else if(t.getTileType() == 2){
                     g.drawImage(t.getImage(),x+15,y-12,null);
