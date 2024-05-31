@@ -9,17 +9,18 @@ public class MapReader {
     private TileLoader[][] map;
     private int rows;
     private int cols;
-    public void movement(String direction){
-        int playerX = 55;
-        int playerY = 25;
+    public void move(String direction){
         if (direction.equals("E")) {
-            if(!(p.getX()+5 >= 1485)){
-                p.setX(p.getX()+5);
+            if(!(p.getX()+10 >= 1285)){
+                p.setTempX(p.getX());
+                p.setX(p.getX()+10);
+                System.out.print(p.getX());
             }
         }
         if (direction.equals("W")) {
-            if(!(p.getX() - 5 < 55)){
-                p.setX(p.getX()-5);
+            if(!(p.getX() - 10 < 55)){
+                p.setTempX(p.getX());
+                p.setX(p.getX()-10);
             }
         }
     }
