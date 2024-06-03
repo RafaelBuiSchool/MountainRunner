@@ -12,8 +12,8 @@ public class Player {
     private final String faceRight = "sprites/test1.png";
     private int x = 55;
     private int y = 27;
-    private int tempX;
-    private int tempY;
+    private int tempX = 0;
+    private int tempY = 0;
 
     public Player() {
         characterLeft = loadImage(faceLeft);

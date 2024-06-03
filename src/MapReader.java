@@ -11,10 +11,9 @@ public class MapReader {
     private int cols;
     public void move(String direction){
         if (direction.equals("E")) {
-            if(!(p.getX()+10 >= 1285)){
+            if(p.getX()+10 <= 1285){
                 p.setTempX(p.getX());
                 p.setX(p.getX()+10);
-                System.out.print(p.getX());
             }
         }
         if (direction.equals("W")) {

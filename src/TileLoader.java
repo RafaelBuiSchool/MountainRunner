@@ -9,23 +9,14 @@ public class TileLoader {
     private BufferedImage image;
     private int row;
     private int col;
-    private boolean hasPlayer;
     private final String s = "sprites/Spike.png";
     private final String c = "sprites/CampFire.png";
     private final String p = "sprites/Platform.png";
     public TileLoader(int tileType, int row, int col) {
         this.setTileType(tileType);
-        this.hasPlayer = false;
         this.row = row;
         this.col = col;
 
-    }
-    public void setPlayer(boolean hasPlayer) {
-        this.hasPlayer = hasPlayer;
-    }
-
-    public boolean hasPlayer() {
-        return hasPlayer;
     }
     public void setTileType(int tileType) {
         this.tileType = tileType;
