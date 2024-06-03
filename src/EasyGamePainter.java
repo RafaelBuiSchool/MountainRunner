@@ -14,10 +14,9 @@ public class EasyGamePainter extends JPanel implements KeyListener{
     private Rectangle spike;
     private Rectangle campfire;
     private MapReader m = new MapReader("Easy");
-    private Player p = new Player();
-
     public EasyGamePainter(EasyGame closeWhenCompleted) {
         this.addKeyListener(this);
+        this.setFocusable(true);
     }
 
     public void paintComponent(Graphics g) {
@@ -34,16 +33,11 @@ public class EasyGamePainter extends JPanel implements KeyListener{
         int y = 55;
         for (int row = 0; row < m.getMap().length; row++) {
             for (int col = 0; col < m.getMap()[0].length; col++) {
-                if(p.getX() == 55 && p.getY() == 27){
-                    g.drawImage(p.getCharacterRight(),55,27,null);
+                if(m.getPlayer().getX() == 55 && m.getPlayer().getY() == 27){
+                    g.drawImage(m.getPlayer().getCharacterRight(),55,27,null);
                 }
                 else{
-                    if(p.getX() > p.getTempX()){
-                        g.drawImage(p.getCharacterRight(),p.getX(),p.getY(),null);
-                    }
-                    else{
-                        g.drawImage(p.getCharacterLeft(),p.getX(),p.getY(),null);
-                    }
+                    g.drawImage(m.getPlayer().getTemp(),m.getPlayer().getX(),m.getPlayer().getY(),null);
                 }
                 TileLoader t = m.getMap()[row][col];
                 if(t.getTileType() == 3){

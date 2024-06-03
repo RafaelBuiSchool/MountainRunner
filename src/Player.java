@@ -12,8 +12,15 @@ public class Player {
     private final String faceRight = "sprites/test1.png";
     private int x = 55;
     private int y = 27;
-    private int tempX = 0;
-    private int tempY = 0;
+    private BufferedImage temp;
+
+    public BufferedImage getTemp() {
+        return temp;
+    }
+
+    public void setTemp(String temp) {
+        this.temp = loadImage(temp);
+    }
 
     public Player() {
         characterLeft = loadImage(faceLeft);
@@ -54,21 +61,12 @@ public class Player {
     public void setY(int y) {
         this.y = y;
     }
-
-    public int getTempX() {
-        return tempX;
+    public String getFaceLeft() {
+        return faceLeft;
     }
 
-    public void setTempX(int tempX) {
-        this.tempX = tempX;
-    }
-
-    public int getTempY() {
-        return tempY;
-    }
-
-    public void setTempY(int tempY) {
-        this.tempY = tempY;
+    public String getFaceRight() {
+        return faceRight;
     }
 }
 

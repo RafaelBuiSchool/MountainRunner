@@ -9,17 +9,20 @@ public class MapReader {
     private TileLoader[][] map;
     private int rows;
     private int cols;
+    public Player getPlayer(){
+        return p;
+    }
     public void move(String direction){
         if (direction.equals("E")) {
-            if(p.getX()+10 <= 1285){
-                p.setTempX(p.getX());
-                p.setX(p.getX()+10);
+            if(p.getX()+7 <= 1255){
+                p.setTemp(p.getFaceRight());
+                p.setX(p.getX()+7);
             }
         }
         if (direction.equals("W")) {
-            if(!(p.getX() - 10 < 55)){
-                p.setTempX(p.getX());
-                p.setX(p.getX()-10);
+            if(p.getX() - 7 > 55){
+                p.setTemp(p.getFaceLeft());
+                p.setX(p.getX()-7);
             }
         }
     }
@@ -59,14 +62,19 @@ public class MapReader {
         for (int i = 0; i < fileData.size(); i++) {
             String d = fileData.get(i);
             for (int j = 0; j < d.length(); j++) {
-                if (d.charAt(j) == '#')
+                if (d.charAt(j) == '#') {
                     worldData[i][j] = 0;
-                if (d.charAt(j) == '.')
+                }
+                if (d.charAt(j) == '.') {
                     worldData[i][j] = 1;
-                if (d.charAt(j) == '^')
+                }
+                if (d.charAt(j) == '^') {
                     worldData[i][j] = 2;
-                if (d.charAt(j) == '*')
+                }
+                if (d.charAt(j) == '*') {
                     worldData[i][j] = 3;
+                }
+                this.p = new Player();
             }
         }
         return worldData;
