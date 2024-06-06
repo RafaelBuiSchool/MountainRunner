@@ -9,20 +9,20 @@ import java.io.File;
 import java.io.IOException;
 
 
-public class LoserScreenPainter extends JPanel implements MouseListener{
+public class WinScreenPainter extends JPanel implements MouseListener{
     private Rectangle playAgain;
     private Rectangle exit;
-    private LoserScreen ls;
+    private WinScreen ws;
     private LevelChooser levelChoice;
-    public LoserScreenPainter(LoserScreen ls){this.addMouseListener(this);
-       this.ls = ls;
-       playAgain = new Rectangle(170,150,120,30);
-       exit = new Rectangle(205,190,50,30);
+    public WinScreenPainter(WinScreen ws){this.addMouseListener(this);
+        this.ws = ws;
+        playAgain = new Rectangle(170,150,120,30);
+        exit = new Rectangle(205,190,50,30);
     }
     protected void paintComponent(Graphics g) {
         BufferedImage homeScreen = null;
         try {
-            homeScreen = ImageIO.read(new File("sprites/LoseScreen.gif"));
+            homeScreen = ImageIO.read(new File("sprites/WinScreen.png"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -43,7 +43,7 @@ public class LoserScreenPainter extends JPanel implements MouseListener{
         if(e.getButton()==1){
             if(playAgain.contains(clicked)){
                 levelChoice = new LevelChooser("Levels (CHOOSE YOUR LEVEL)");
-                ls.dispose();
+                ws.dispose();
             }
             else if(exit.contains(clicked)){
                 System.exit(0);
