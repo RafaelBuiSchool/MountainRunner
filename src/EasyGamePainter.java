@@ -23,9 +23,18 @@ public class EasyGamePainter extends JPanel implements KeyListener{
     private boolean lose = false;
     private boolean win = false;
     private MapReader m = new MapReader("Easy");
+    private boolean isJumping = false;
+    private boolean isFalling  = false;
+    private int jumpHeight = 45;
+    private int jumpSpeed = 15;
+    private int fallSpeed = 2;
+    private int initialYValue;
+    private boolean movingLeft = false;
+    private boolean movingRight = false;
     public EasyGamePainter(EasyGame closeWhenCompleted) {
         this.addKeyListener(this);
         this.setFocusable(true);
+        this.requestFocusInWindow();
         this.closeWhenCompleted = closeWhenCompleted;
     }
 
@@ -46,11 +55,9 @@ public class EasyGamePainter extends JPanel implements KeyListener{
                 if(m.getPlayer().getX() == 55 && m.getPlayer().getY() == 27){
                     g.drawImage(m.getPlayer().getCharacterRight(),55,27,null);
                     player = new Rectangle(m.getPlayer().getX(),m.getPlayer().getY(),25,35);
-                    g.drawRect(m.getPlayer().getX(),m.getPlayer().getY(),25,35);
                 }
                 else{
-                    player = new Rectangle(m.getPlayer().getX(),m.getPlayer().getY(),25,35);
-                    g.drawRect(m.getPlayer().getX(),m.getPlayer().getY(),25,35);
+                    player = new Rectangle(m.getPlayer().getX(),m.getPlayer().getY()+25,25,10);
                     for(Rectangle i:spikeChecker){
                         if(player.intersects(i)){
                             lose = true;
@@ -60,25 +67,22 @@ public class EasyGamePainter extends JPanel implements KeyListener{
                         win = true;
                     }
                     g.drawImage(m.getPlayer().getTemp(),m.getPlayer().getX(),m.getPlayer().getY(),null);
-                    player = new Rectangle(m.getPlayer().getX(),m.getPlayer().getY(),m.getPlayer().getX()+28,m.getPlayer().getY()+39);
+                    player = new Rectangle(m.getPlayer().getX(),m.getPlayer().getY(),25,35);
                 }
                 TileLoader t = m.getMap()[row][col];
                 if(t.getTileType() == 3){
                     g.drawImage(t.getImage(),x+13,y-30,null);
                     campfire = new Rectangle(x+20,y-30,40,60);
-                    g.drawRect(x+20,y-30,40,60);
                 }
                 else if(t.getTileType() == 2){
                     g.drawImage(t.getImage(),x+15,y-12,null);
-                    spike = new Rectangle(x+25,y-10,32,30);
-                    g.drawRect(x+25,y-10,32,30);
+                    spike = new Rectangle(x+25,y-5,32,28);
                     spikeChecker.add(spike);
 
                 }
                 else if(t.getTileType() == 1){
                     g.drawImage(t.getImage(),x+10,y,null);
-                    platform = new Rectangle(x+17,y+5,47,20);
-                    g.drawRect(x+17,y+5,47,20);
+                    platform = new Rectangle(x+17,y+5,47,5);
                     platformChecker.add(platform);
                 }
                 x += 45;
@@ -95,24 +99,80 @@ public class EasyGamePainter extends JPanel implements KeyListener{
             closeWhenCompleted.dispose();
         }
     }
-
-    @Override
-    public void keyTyped(KeyEvent e) {
-        char key = e.getKeyChar();
-        if (key == 'a') {
-            m.move("W");
-        }
-        if (key == 'd') {
-            m.move("E");
+    public void jump(){
+        if(!isJumping && !isFalling){
+            isJumping = true;
+            initialYValue = m.getPlayer().getY();
         }
     }
-
-
+    public void updateYPos(){
+        if(isJumping == true){
+            if(m.getPlayer().getY() > initialYValue - jumpHeight){
+                m.getPlayer().setY(m.getPlayer().getY()-jumpSpeed);
+            }
+            else{
+                isJumping = false;
+                isFalling = true;
+            }
+        }
+        else if(isFalling) {
+            boolean onPlat = false;
+            for (Rectangle i : platformChecker) {
+                if (player.intersects(i)) {
+                    onPlat = true;
+                    break;
+                }
+            }
+            if (!(onPlat == true) && m.getPlayer().getY() + fallSpeed <= 896) {
+                m.getPlayer().setY(m.getPlayer().getY() + fallSpeed);
+            } else {
+                isFalling = false;
+            }
+        }
+        else {
+            boolean onPlat = false;
+            for (Rectangle i : platformChecker) {
+                if (player.intersects(i)) {
+                    onPlat = true;
+                    break;
+                }
+            }
+            if (!(onPlat == true)) {
+                isFalling = true;
+            }
+        }
+        if(movingLeft == true){
+            m.move("W");
+        }
+        if(movingRight == true){
+            m.move("E");
+        }
+        repaint();
+    }
+    public void keyTyped(KeyEvent e) {
+    }
 
     public void keyPressed(KeyEvent e) {
+        int key = e.getKeyCode();
+        if (key == KeyEvent.VK_A) {
+            movingLeft = true;
+        }
+        if (key == KeyEvent.VK_D) {
+            movingRight = true;
+        }
+        if (key == KeyEvent.VK_W) {
+            jump();
+        }
     }
 
     public void keyReleased(KeyEvent e) {
+        int key = e.getKeyCode();
+        if (key == KeyEvent.VK_A) {
+            movingLeft = false;
+        }
+        if (key == KeyEvent.VK_D) {
+            movingRight = false;
+        }
 
     }
 }

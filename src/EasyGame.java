@@ -1,31 +1,25 @@
-import javax.swing.JFrame;
+import javax.swing.*;
 
-public class EasyGame extends JFrame implements Runnable {
-    private Thread windowThread;
-    private EasyGamePainter x;
+public class EasyGame {
+    private JFrame frame;
+    private EasyGamePainter easyGamePainter;
 
-    public EasyGame(String display) {
-        super(display);
-        int frameWidth = 1344;
-        int frameHeight = 896;
-        x = new EasyGamePainter(this);
-        this.add(x);
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.setSize(frameWidth, frameHeight);
-        this.setLocationRelativeTo(null);
-        this.setVisible(true);
-        startThread();
+    public EasyGame(String title) {
+        frame = new JFrame(title);
+        easyGamePainter = new EasyGamePainter(this);
 
+        frame.add(easyGamePainter);
+        frame.setSize(1344, 896);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+
+        easyGamePainter.requestFocusInWindow();
+
+        Timer timer = new Timer(50, e -> easyGamePainter.updateYPos());
+        timer.start();
     }
 
-    public void startThread() {
-        windowThread = new Thread(this);
-        windowThread.start();
-    }
-
-    public void run() {
-        while (true) {
-            x.repaint();
-        }
+    public void dispose() {
+        frame.dispose();
     }
 }
