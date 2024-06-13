@@ -79,16 +79,6 @@ public class MapReader {
         }
         return worldData;
     }
-    public boolean validPosition(int row, int col) {
-        try {
-            TileLoader t = map[row][col];
-            return true;
-        }
-        catch (IndexOutOfBoundsException e) {
-            return false;
-        }
-    }
-
     public Player getP() {
         return p;
     }

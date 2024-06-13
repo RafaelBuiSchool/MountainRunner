@@ -2,14 +2,14 @@ import javax.swing.JFrame;
 
 public class HomeScreen extends JFrame implements Runnable {
     private Thread windowThread;
-    private HomeScreenPainter p;
+    private HomeScreenPainter homeScreen;
 
     public HomeScreen(String display) {
         super(display);
         int frameWidth = 1024;
         int frameHeight = 683;
-        p = new HomeScreenPainter(this);
-        this.add(p);
+        homeScreen = new HomeScreenPainter(this);
+        this.add(homeScreen);
         //this.addKeyListener(p);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setSize(frameWidth, frameHeight);
@@ -26,7 +26,7 @@ public class HomeScreen extends JFrame implements Runnable {
 
     public void run() {
         while (true) {
-            p.repaint();
+            homeScreen.repaint();
         }
     }
 }
