@@ -8,8 +8,8 @@ import java.nio.Buffer;
 public class Player {
     private BufferedImage characterLeft;
     private BufferedImage characterRight;
-    private final String faceLeft = "sprites/test.png";
-    private final String faceRight = "sprites/test1.png";
+    private final String faceLeft = "sprites/PlayerLeft.png";
+    private final String faceRight = "sprites/PlayerRight.png";
     private int x = 55;
     private int y = 27;
     private BufferedImage temp;
