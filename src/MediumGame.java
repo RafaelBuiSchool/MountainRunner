@@ -15,7 +15,7 @@ public class MediumGame {
 
         mediumGamePainter.requestFocusInWindow();
 
-        Timer timer = new Timer(1, e -> mediumGamePainter.updateYPos());
+        Timer timer = new Timer(16, e -> mediumGamePainter.updateYPos());
         timer.start();
     }
 

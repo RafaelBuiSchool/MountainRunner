@@ -15,7 +15,7 @@ public class EasyGame {
 
         easyGamePainter.requestFocusInWindow();
 
-        Timer timer = new Timer(1, e -> easyGamePainter.updateYPos());
+        Timer timer = new Timer(16, e -> easyGamePainter.updateYPos());
         timer.start();
     }
 
