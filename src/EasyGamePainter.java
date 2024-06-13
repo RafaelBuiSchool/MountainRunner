@@ -27,7 +27,7 @@ public class EasyGamePainter extends JPanel implements KeyListener{
     private boolean isFalling  = false;
     private int jumpHeight = 45;
     private int jumpSpeed = 15;
-    private int fallSpeed = 2;
+    private int fallSpeed = 3;
     private int initialYValue;
     private boolean movingLeft = false;
     private boolean movingRight = false;

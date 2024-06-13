@@ -14,15 +14,15 @@ public class MapReader {
     }
     public void move(String direction){
         if (direction.equals("E")) {
-            if(p.getX()+7 <= 1255){
+            if(p.getX()+8<= 1255){
                 p.setTemp(p.getFaceRight());
-                p.setX(p.getX()+7);
+                p.setX(p.getX()+8);
             }
         }
         if (direction.equals("W")) {
-            if(p.getX() - 7 > 55){
+            if(p.getX() - 8 > 55){
                 p.setTemp(p.getFaceLeft());
-                p.setX(p.getX()-7);
+                p.setX(p.getX()-8);
             }
         }
     }

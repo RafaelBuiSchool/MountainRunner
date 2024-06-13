@@ -15,7 +15,7 @@ public class HardGame {
 
         hardGamePainter.requestFocusInWindow();
 
-        Timer timer = new Timer(50, e -> hardGamePainter.updateYPos());
+        Timer timer = new Timer(1, e -> hardGamePainter.updateYPos());
         timer.start();
     }
 
